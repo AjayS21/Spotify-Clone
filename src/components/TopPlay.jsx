@@ -23,7 +23,7 @@ const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handle
             {song?.title}
           </p>
         </Link>
-        <Link to={`/artists/${song?.artists[0].adamid}`}>
+        <Link to={`/artists/${song[0]?.artists[0].adamid}`}>
           <p className="text-base text-gray-300 mt-1">
             {song?.subtitle}
           </p>
@@ -103,14 +103,14 @@ const TopPlay = () => {
           modules={[FreeMode]}
           className="mt-4"
         >
-          {topPlays?.slice(0, 5).map((artist) => (
+          {topPlays?.map((song,i) => (
             <SwiperSlide
-              key={artist?.key}
+              key={song?.key}
               style={{ width: '25%', height: 'auto' }}
               className="shadow-lg rounded-full animate-slideright"
             >
-              <Link to={`/artists/${artist?.artists[0].adamid}`}>
-                <img src={artist?.images?.background} alt="Name" className="rounded-full w-full object-cover" />
+              <Link to={`/artists/${song[0]?.artists[0].adamid}`}>
+                <img src={song[0]?.images.background} alt="Name" className="rounded-full w-full object-cover" />
               </Link>
             </SwiperSlide>
           ))}
